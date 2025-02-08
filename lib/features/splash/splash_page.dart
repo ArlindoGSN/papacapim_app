@@ -12,7 +12,7 @@ class SplashPage extends StatelessWidget {
         
         decoration: BoxDecoration(
           
-          gradient: LinearGradient(colors: [AppColors.secondary, AppColors.third], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          gradient: LinearGradient(colors: [AppColors.quaternary, AppColors.quinary], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: const Text('Papacapim App', style: TextStyle(color: AppColors.primary, fontSize: 50, fontWeight: FontWeight.bold),),
       ),

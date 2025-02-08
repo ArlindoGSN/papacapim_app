@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  static const Color primary = Colors.black;
-  static const Color secondary = Colors.yellow;
-  static const Color third = Colors.yellowAccent;
-  static const Color background = Colors.white;
+  static const Color primary = Color(0xFF000000);
+  static const Color secondary = Color(0xFF9CA6A2);
+  static const Color third = Color(0xFFF2F2F2);
+  static const Color quaternary = Color(0xFFF2CB05);
+  static const Color quinary = Color(0xFFF2B807);
 }
