@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papacapim_app/commons/constants/app_colors.dart';
+import 'package:papacapim_app/commons/constants/app_texts.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -14,7 +15,7 @@ class SplashPage extends StatelessWidget {
           
           gradient: LinearGradient(colors: [AppColors.quaternary, AppColors.quinary], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
-        child: const Text('Papacapim App', style: TextStyle(color: AppColors.primary, fontSize: 50, fontWeight: FontWeight.bold),),
+        child: const Text('Papacapim', style: AppTexts.bigText,),
       ),
     );
   }
