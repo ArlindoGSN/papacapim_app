@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papacapim_app/features/onbording/onbording_page.dart';
+import 'package:papacapim_app/features/register_user/register_user_page.dart';
 import 'package:papacapim_app/features/splash/splash_page.dart';
 
 class App extends StatelessWidget {
@@ -9,7 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: OnbordingPage(),
+        body: RegisterUserPage(),
       ),
     );
   }
