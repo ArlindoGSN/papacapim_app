@@ -9,6 +9,9 @@ class OnbordingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Column(
+        spacing: 20,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(flex: 2,child: Container(color: AppColors.third, child: Image.asset('assets/images/logo.png'),),),
           Text(
@@ -22,8 +25,14 @@ class OnbordingPage extends StatelessWidget {
            child: Text("Criar Conta", style: AppTexts.smallText ,),
      
         ),
-          
-        Text("Você já tem uma conta? Login")
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Você já tem uma conta?"),
+            TextButton(child: Text("Entrar", style: TextStyle(color: AppColors.quaternary),) ,onPressed: (){},)
+          ],
+        )
         ],
       ),
     );
