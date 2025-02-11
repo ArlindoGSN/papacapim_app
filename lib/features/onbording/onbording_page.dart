@@ -21,8 +21,10 @@ class OnbordingPage extends StatelessWidget {
           ElevatedButton(
                style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.quaternary),
-            onPressed:  (){},
-           child: Text("Criar Conta", style: AppTexts.smallText ,),
+            onPressed:  (){
+              Navigator.pushNamed(context, '/register'); 
+            },
+           child: Text("Criar Conta", style: AppTexts.smallText.copyWith(color: AppColors.third) ,),
      
         ),
         Row(
