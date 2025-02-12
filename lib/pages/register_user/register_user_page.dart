@@ -10,22 +10,28 @@ class RegisterUserPage extends StatefulWidget {
 }
 
 class _RegisterUserPageState extends State<RegisterUserPage> {
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>();
+  final _loginController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(title: Text('Criar Conta')),
       body: Center(
-          child: Form(
-            child: Column(
-              
-              crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 20,
+        child: Form(
+          key: _keyForm,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 20,
             children: [
               TextFormField(
+                controller: _loginController,
                 decoration: InputDecoration(
                   hintText: 'Insira seu login',
                   labelText: 'Login',
-                  
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -35,6 +41,7 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                 },
               ),
               TextFormField(
+                controller: _nameController,
                 decoration: const InputDecoration(
                   hintText: 'Como as pesssoas te chamam?',
                   labelText: 'Nome',
@@ -47,31 +54,42 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                 },
               ),
               TextFormField(
-                  validator: (value) {
-                  if (value == null || value.isEmpty || value.length < 8 || value.length > 16 || !value.contains(RegExp(r'[A-Z]'))) {
+                controller: _passwordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'A senha é obrigatorio';
                   }
+
+                  if (value.length < 8 || value.length > 16) {
+                    return 'A senha deve ter entre 8 e 16 caracteres';
+                  }
                   return null;
-                }, 
+                },
                 decoration: InputDecoration(
                   hintText: 'Insira sua senha',
                   labelText: 'Senha',
                   fillColor: AppColors.primary,
                   focusColor: AppColors.primary,
                   hoverColor: AppColors.primary,
-                
-              
                 ),
               ),
               TextFormField(
+                controller: _confirmPasswordController,
                 validator: (value) {
-                  if (value == null || value.isEmpty || value.length < 8 || value.length > 16 || !value.contains(RegExp(r'[A-Z]'))) {
+                  if (value == null || value.isEmpty) {
                     return 'A senha é obrigatorio';
+                  }
+
+                  if (value.length < 8 || value.length > 16) {
+                    return 'A senha deve ter entre 8 e 16 caracteres';
+                  }
+                  if (value != _passwordController.text) {
+                    return 'As senhas nao conferem';
                   }
                   return null;
                 },
                 decoration: InputDecoration(
-                  hintText: 'Confirme sua senha', 
+                  hintText: 'Confirme sua senha',
                   labelText: 'Confirmar Senha',
                   fillColor: AppColors.primary,
                   focusColor: AppColors.primary,
@@ -80,14 +98,32 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.quaternary),
-                onPressed:  (){},
-               child: Text("Criar Conta", style: AppTexts.smallText.copyWith(color: AppColors.third),),
+                    backgroundColor: AppColors.quaternary),
+                onPressed: () {
+                  if (_keyForm.currentState!.validate()) {
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Conta criada com sucesso'),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Erro ao criar conta'),
+                      ),
+                    );
+                  }
+                },
+                child: Text(
+                  "Criar Conta",
+                  style: AppTexts.smallText.copyWith(color: AppColors.third),
+                ),
               )
             ],
           ),
-          ),
         ),
-      );
+      ),
+    );
   }
 }

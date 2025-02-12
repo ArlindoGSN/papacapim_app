@@ -8,14 +8,18 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container( 
+      body: Container(
         alignment: Alignment.center,
-        
         decoration: BoxDecoration(
-          
-          gradient: LinearGradient(colors: [AppColors.quaternary, AppColors.quinary], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          gradient: LinearGradient(
+              colors: [AppColors.quaternary, AppColors.quinary],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
         ),
-        child: const Text('Papacapim', style: AppTexts.bigText,),
+        child: const Text(
+          'Papacapim',
+          style: AppTexts.bigText,
+        ),
       ),
     );
   }
